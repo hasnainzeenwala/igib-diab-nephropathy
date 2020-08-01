@@ -1,0 +1,55 @@
+{\rtf1\ansi\ansicpg1252\cocoartf2512
+\cocoatextscaling0\cocoaplatform0{\fonttbl\f0\fswiss\fcharset0 Helvetica;}
+{\colortbl;\red255\green255\blue255;\red0\green0\blue0;}
+{\*\expandedcolortbl;;\cssrgb\c0\c0\c0;}
+\paperw11900\paperh16840\margl1440\margr1440\vieww28600\viewh15540\viewkind0
+\deftab20
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\pardeftab20\partightenfactor0
+
+\f0\fs36 \cf2 \expnd0\expndtw0\kerning0
+## Practice School-1 (PS - 1) Project, Diabetic Nephropathy Scoring Form\
+\
+## Submitted By: Hasnain Zeenwala, BITS Pilani, Hyderabad Campus\
+## Submitted To: Dr. S Ramachandran, Senior Principal Scientist, CSIR-IGIB\
+\
+## Diabetic Nephropathy Scoring Form
+\fs24 \
+\
+This file contains information on how to use and run the Diabetic Nephropathy Form application. The program has been developed following an Object Oriented Paradigm. Each source code file contains, one or multiple inter-related classes.\
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\pardeftab20\partightenfactor0
+
+\fs28 \cf2 ## How to Run\
+\
+1. 
+\fs24 The program uses \'91pandas\'92 library and \'91requests\'92 library, install them if not already present.\
+2. The user must be connected to the internet because String DB api is used to generate the graph.\
+3. Run the \'93driver.py\'94 script to execute the program\
+\
+
+\fs28 ## Instructions On Using the Form
+\fs24 \
+\
+The first window contains multiple choice questions. The user should select the polymorphism of the genes expressed in the patient's body. For every gene, an options of 'other' is available, select it if no polymorphism from the available options is expressed in the patient's body. Selecting 'other' will cause that gene to be excluded from the calculations.\
+\
+After selecting the appropriate option for each question click 'Submit', placed at the bottom of the page. (Python's scrollbar functionality is capricious: the user may have to place the cursor on the scrollbar and then scroll. The down key may not work.)\
+\
+The next window contains the list of all the genes (excluding the ones for which the user selected 'other'). To include a gene in the calculation, click on the checkbox, to exclude it click on the checkbox again. (By Default no gene is selected). Below the list of genes is a drop-down menu from which the user should select the method for weighing the scores. By default, 'Odds Ratio Method' is selected. After this, next to the score label, the score according to the selections of the genes made will be visible, changing the method or the genes will change the score.\
+\
+The higher the score the more the person is at risk of developing Diabetic Nephropathy. (The scores aren't normalized. The score of one method cannot be compared to the score obtained from another method.) \
+\
+
+\fs28 ## Weight and Score Files:
+\fs24 \
+\
+'allele_score.csv' contains the unweighted score assigned to each allele. If the allele exerts a malignant effect it is assigned a score of 1, and if it exerts a protective effect it is assigned a score of -1.\
+\
+'allele_weight_oddsrat.csv' contains the weights assigned to each allele according to their odds ratio and confidence interval. The details of how the weight was calculated is included in the report. \
+\
+'allele_weight_expoddsrat.csv' all the weights calculated using odds ratio and confidence intervals have been raised to the power of 'e' exp(weight). Since all the weights are greater than 1, raising them to the power of 'e' scales up or exaggerates the difference between them.\
+\
+\'91gene-list\'92 contains the list of genes and alleles considered in the form. It is suggested to not change this file as it contains data in a very specific format to be read by the application.\
+\
+\'91odds_ratio_weights.py\'92 isn't a part of the main program, and it needn't be run. It was only run once to generate weights and store them in the csv files. It has been included only to show the function and formula used for generating weights\
+\
+Weights for integrated network analysis are not stored in a file. Rather, the list of genes is sent as a request using the String DB API and the graph data is returned (the total score of associating between two proteins is used as the weight). According to the genes the user selects for analysis, a subgraph is created, and the total weight for each gene is calculated by adding the weight of every edge associated with that gene.\
+}
